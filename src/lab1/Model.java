@@ -5,7 +5,6 @@ package lab1;
  */
 public class Model {
 
-
     private String firstName;
     private String lastName;
     private int height; // Unit: inches
@@ -22,25 +21,23 @@ public class Model {
     public static final  int TRAVEL_BONUS_DOLLARS_PER_HOUR = 4;
     public static final  int SMOKER_DEDUCTION_DOLLARS_PER_HOUR = 10;
 
-
-
     /**
      * Constructor1
-     * @param
-      */
+     * @throws IllegalAccessException exception thrown when invalid input is taken
+     */
     Model() throws IllegalAccessException {
         this("   ", "   ", 50, 150, true, false);
     }
 
     /**
      * Constructor2
-     * @param firstName
-     * @param lastName
-     * @param height
-     * @param weight
-     * @param canTravel
-     * @param canSmoke
-     * @throws IllegalAccessException
+     * @param firstName first name of the model
+     * @param lastName last name of the model
+     * @param height height of the model
+     * @param weight weight of the model
+     * @param canTravel whether the model can travel
+     * @param canSmoke whether the model smokes
+     * @throws IllegalAccessException exception thrown when invalid input is taken
      */
     Model(String firstName, String lastName, int height, double weight, boolean canTravel, boolean canSmoke) throws IllegalAccessException {
         setFirstName(firstName);
@@ -53,17 +50,21 @@ public class Model {
 
     /**
      * Constructor3
-     * @param firstName
-     * @param lastName
-     * @param height
-     * @param weight
-     * @throws IllegalAccessException
+     * @param firstName first name of the model
+     * @param lastName last name of the model
+     * @param height height of the model
+     * @param weight weight of the model
+     * @throws IllegalAccessException exception thrown when invalid input is taken
      */
     Model(String firstName, String lastName, int height, double weight) throws IllegalAccessException{
         this(firstName, lastName, height, weight, true, false);
     }
 
-
+    /**
+     * first name setter
+     * @param firstName first name of the model
+     * @throws IllegalAccessException exception thrown when invalid input is taken
+     */
     public void setFirstName(String firstName) throws IllegalAccessException {
         if (firstName.length() > 2 && firstName.length() < 21) {
             this.firstName = firstName;
@@ -80,6 +81,11 @@ public class Model {
         return firstName;
     }
 
+    /**
+     * last name setter
+     * @param lastName last name of the model
+     * @throws IllegalAccessException exception thrown when invalid input is taken
+     */
     public void setLastName(String lastName) throws IllegalAccessException{
         if (lastName.length() > 2 && lastName.length() < 21) {
             this.lastName = lastName;
@@ -98,8 +104,8 @@ public class Model {
 
     /**
      * height setter
-     * @param inches
-     * @throws IllegalAccessException
+     * @param inches height of the model in inches
+     * @throws IllegalAccessException exception thrown when invalid input is taken
      */
     public void setHeight(int inches) throws IllegalAccessException{
         if (inches >= 24 && inches <= 84) {
@@ -107,8 +113,14 @@ public class Model {
         }else{
             throw new IllegalAccessException("Height must be 24 to 84 inches");
         }
-
     }
+
+    /**
+     * height setter
+     * @param feet height of the model in feet
+     * @param inches height of the model in inches
+     * @throws IllegalAccessException exception thrown when invalid input is taken
+     */
     public void setHeight(int feet, int inches) throws IllegalAccessException {
         int totalInches = feet * 12 + inches;
         setHeight(totalInches);
@@ -124,8 +136,8 @@ public class Model {
 
     /**
      * weight setter
-     * @param pounds
-     * @throws IllegalAccessException
+     * @param pounds weight of the model in pounds
+     * @throws IllegalAccessException exception thrown when invalid input is taken
      */
     public void setWeight(double pounds) throws IllegalAccessException{
         if (pounds >= 80 && pounds <= 280) {
@@ -135,12 +147,12 @@ public class Model {
         }
     }
 
-    /**
-     * weight setter: takes long data type of kilogram, converts into pounds
-     * @param kilograms
-     * @throws IllegalAccessException
-     */
     double weightKg;
+    /**
+     * weight setter
+     * @param kilograms wight of the model in kilograms
+     * @throws IllegalAccessException exception thrown when invalid input is taken
+     */
     public void setWeight(long kilograms) throws IllegalAccessException {
         this.weight = kilograms * POUNDS_PER_KG;
         weightKg = this.weight;
@@ -148,8 +160,8 @@ public class Model {
     }
 
     /**
-     * weight in kilogram accessor
-     * @return weight in kilogram which is rounded
+     * weight accessor
+     * @return weight in kilograms
      */
     public long getWeightKg() {
         weightKg = this.weight / POUNDS_PER_KG;
@@ -165,7 +177,7 @@ public class Model {
 
     /**
      * can travel setter
-     * @param canTravel
+     * @param canTravel whether the model can travel
      */
     public void setCanTravel(boolean canTravel){
         this.canTravel = canTravel;
@@ -181,7 +193,7 @@ public class Model {
 
     /**
      * can smoke setter
-     * @param canSmoke
+     * @param canSmoke whether the model smokes
      */
     public void setCanSmoke(boolean canSmoke){
         this.canSmoke = canSmoke;
@@ -197,7 +209,7 @@ public class Model {
 
     /**
      * feet and inches getter
-     * @return "feet feet inches inches"
+     * @return feet and inches of the model
      */
     public String getHeightInFeetAndInches(){
         int feet = height / INCHES_PER_FOOT;
@@ -222,7 +234,7 @@ public class Model {
 
     /**
      * print details method
-     * print(  Name: fisrtName lastName
+     * print(  Name: firstName lastName
      *         Height: height inches
      *         Weight: weight pounds
      *         "Does not travel" or "Does travel"
@@ -248,7 +260,7 @@ public class Model {
      *          Weight: weight pounds
      *          Travel: "yep" or "nope"
      *          Smokes: "yep" or "nope"
-     *          Hourly rate: $ integer"
+     *          Hourly rate: $hourly rate"
      */
     public String displayModelsDetails(){
         String travelYepNope = (getCanTravel()) ? "yep": "nope";
@@ -261,5 +273,4 @@ public class Model {
                              "Hourly rate: $" + calculatePayDollarsPerHour(),
                              firstName, lastName, weight, travelYepNope, smokeYepNope);
     }
-
 }
