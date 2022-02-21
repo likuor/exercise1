@@ -19,7 +19,7 @@ public class Answer {
             randomAccessFile.readLine();
             String randomStr = randomAccessFile.readLine();
             randomAccessFile.close();
-            System.out.println(randomStr);
+            return randomStr;
         }catch (IOException ignored){
         }
         return "";
