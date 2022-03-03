@@ -1,7 +1,5 @@
 package lab3;
 
-import java.util.ArrayList;
-
 /**
  * @author Kaiya Takahashi
  */

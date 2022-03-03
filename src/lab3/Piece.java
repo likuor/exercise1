@@ -4,7 +4,7 @@ package lab3;
  * @author Kaiya Takahashi
  */
 
-public class Piece {
+public abstract class Piece {
 
     private int value;
     private boolean isWhite;
