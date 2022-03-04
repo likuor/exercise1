@@ -17,12 +17,6 @@ public class Driver {
         Piece p4 = new Pawn(1, false, true, piecesList.queen2);
         Piece p5 = new Pawn(1, true, true, piecesList.knight1);
 
-        Piece pawn = new Pawn(1, true, false, null);
-        Queen queen = new Queen(9, true);
-        System.out.println(pawn);
-        ((Pawn) pawn).promote(queen);
-        System.out.println(pawn);
-
         System.out.println(p1.equals(p2)); //should return false
         System.out.println(p1.equals(p4)); //should return false
         System.out.println(p1.equals(p5));; //should return false

@@ -7,7 +7,7 @@ package lab3;
 public class Rook extends Piece{
 
     Rook(int value, boolean isWhite) {
-        super(value, isWhite);
+        super(5, isWhite);
     }
 
     @Override

@@ -14,8 +14,7 @@ public abstract class Piece {
         this.isWhite = isWhite;
     }
 
-    public void move(){
-    }
+    public abstract void move();
 
     @Override
     public boolean equals(Object o) {

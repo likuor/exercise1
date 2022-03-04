@@ -94,30 +94,30 @@ public class ContactList {
         String usernameInput = "";
         boolean isDuplicate = true;
         while(isDuplicate) {
-            usernameInput = InputCollector.mustGetUserInput("Enter name: ");
+            usernameInput = InputCollector.getUserInput("Enter name: ", true);
             isDuplicate = isDuplicateName(usernameInput);
         }
         newContact.setName(usernameInput);
         isDuplicate = true;
         String userMobileInput = "";
         while(isDuplicate) {
-            userMobileInput = InputCollector.mustGetUserInputNumber("Enter mobile without hyphen(-): ");
+            userMobileInput = InputCollector.getUserInputNumber("Enter mobile without hyphen(-): ", true);
             isDuplicate = isDuplicateMobile(userMobileInput);
         }
         newContact.setMobile(userMobileInput);
-        String userWorkInput = InputCollector.getUserInputNumber("Enter Work without hyphen(-): ");
+        String userWorkInput = InputCollector.getUserInputNumber("Enter Work without hyphen(-): ", false);
         if (!userWorkInput.isBlank()) {
             newContact.setWork(", work=" + userWorkInput);
         }else{
             newContact.setWork("");
         }
-        String userHomeInput = InputCollector.getUserInputNumber("Enter Home without hyphen(-): ");
+        String userHomeInput = InputCollector.getUserInputNumber("Enter Home without hyphen(-): ", false);
         if (!userHomeInput.isBlank()) {
             newContact.setHome(", home=" + userHomeInput);
         }else{
             newContact.setHome("");
         }
-        String userCityInput = InputCollector.getUserInput("Enter city: ");
+        String userCityInput = InputCollector.getUserInput("Enter city: ", false);
         if (!userCityInput.isBlank()) {
             newContact.setCity(", city=" + userCityInput);
         }else{

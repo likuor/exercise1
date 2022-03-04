@@ -27,7 +27,7 @@ public class Driver {
                     | 4. Update Contact    |
                     | 5. Quit              |
                     +======================+""");
-            String userNumberInput = InputCollector.getUserInput("Enter your option: ");
+            String userNumberInput = InputCollector.getUserInput("Enter your option: ", false);
             switch (userNumberInput) {
                 case "1":
                     contactList.printContactList();
