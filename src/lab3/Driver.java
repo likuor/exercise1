@@ -19,8 +19,8 @@ public class Driver {
 
         System.out.println(p1.equals(p2)); //should return false
         System.out.println(p1.equals(p4)); //should return false
-        System.out.println(p1.equals(p5)); //should return false
-        System.out.println(p2.equals(p3)); //should return false
-        System.out.println(p4.equals(p5)); //should return false
+        System.out.println(p1.equals(p5));; //should return false
+        System.out.println(p2.equals(p3));; //should return false
+        System.out.println(p4.equals(p5));; //should return false
     }
 }
