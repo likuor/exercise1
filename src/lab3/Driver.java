@@ -75,7 +75,9 @@ public class Driver {
                     System.out.print(game.getBoard()[i][j].getIcon() + " ");
                 }
             }
-            System.out.println();
+            System.out.println(" " + i);
         }
+        System.out.println();
+        System.out.print("a　b　c　d　e　f　g　h");
     }
 }
