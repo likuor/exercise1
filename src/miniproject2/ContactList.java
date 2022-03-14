@@ -35,7 +35,7 @@ public class ContactList {
 
     /**
      * Method to remove object from arraylist
-     * @param index the index of object user want to ramove
+     * @param index the index of object user want to remove
      */
     public void removeContact(int index){
         arrayList.remove(index);

@@ -33,6 +33,14 @@ public class Pawn extends Piece{
         this.newPiece = newPiece;
     }
 
+    public String getIcon(){
+        if(this.isWhite()) {
+            return "♟";
+        }else{
+            return "♙";
+        }
+    }
+
     public void promote(Piece newPiece){
         this.promoted = true;
         this.newPiece = newPiece;

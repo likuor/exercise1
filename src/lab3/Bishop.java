@@ -21,6 +21,15 @@ public class Bishop extends Piece{
     }
 
     @Override
+    public String getIcon() {
+        if (this.isWhite()) {
+            return "♜";
+        }else{
+            return "♖";
+        }
+    }
+
+    @Override
     public void setValue(int value) {
         super.setValue(value);
     }
