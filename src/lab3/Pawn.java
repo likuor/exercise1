@@ -41,6 +41,11 @@ public class Pawn extends Piece{
         }
     }
 
+    @Override
+    public boolean isValidMove(Position newPosition) {
+        return super.isValidMove(newPosition);
+    }
+
     public void promote(Piece newPiece){
         this.promoted = true;
         this.newPiece = newPiece;
