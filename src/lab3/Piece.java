@@ -16,9 +16,18 @@ public abstract class Piece {
         this.isWhite = isWhite;
     }
 
+    Piece(boolean isWhite, Position position){
+        this.value = value;
+        this.isWhite = isWhite;
+    }
+
     public abstract void move();
 
     public abstract String getIcon();
+
+    public void setPiece(Piece piece){
+
+    }
 
     public boolean isValidMove(Position newPosition){
         return newPosition.getCol() > 0 && newPosition.getCol() < 8 &&
