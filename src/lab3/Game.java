@@ -1,5 +1,3 @@
-
-
 package lab3;
 
 import java.util.ArrayList;
@@ -69,8 +67,34 @@ public class Game {
      */
     public boolean keepPlaying(ArrayList<Integer> pieceIndex){
         boolean res = true;
+        boolean sameColour;
         int originalCol = pieceIndex.get(0);
         int originalRow = pieceIndex.get(1);
+        if (pieceIndex.size() == 2){
+            Piece tempPiece = board[originalCol][originalRow];
+            try {
+                sameColour = true;
+                // check if player picks the valid colour piece
+                if (!tempPiece.isWhite()) {
+                    if (turnChanger % 2 == 0) {
+                        System.out.println("Wrong piece");
+                        sameColour = false;
+                    }
+                } else {
+                    if (turnChanger % 2 != 0) {
+                        System.out.println("Wrong piece");
+                        sameColour = false;
+                    }
+                }
+                if (sameColour) {
+                    tempPiece.printPossibleMove(pieceIndex, board, turnChanger);
+                }
+            }catch (NullPointerException e){
+                System.out.println("Invalid input");
+            }
+            turnChanger++;
+            return true;
+        }
         int destinationCol = pieceIndex.get(2);
         int destinationRow = pieceIndex.get(3);
 
@@ -93,7 +117,7 @@ public class Game {
             res = false;
 
         } else {
-            setPiece(originalRow,originalCol,destinationRow, destinationCol);
+            setPiece(pieceIndex);
         }
         return res;
     }
@@ -107,15 +131,50 @@ public class Game {
     /**
      * Move piece from current position to destination
      */
-    public void setPiece(int originalRow,int originalCol,int destinationRow, int destinationCol){
-        this.board[destinationCol][destinationRow] = board[originalCol][originalRow];
-        this.board[originalCol][originalRow] = null;
-        System.out.println("Nice move");
-        System.out.println();
+    public void setPiece(ArrayList<Integer> pieceIndex){
+        int originalCol1 = pieceIndex.get(0);
+        int originalRow1 = pieceIndex.get(1);
+        int destinationCol1 = pieceIndex.get(2);
+        int destinationRow1 = pieceIndex.get(3);
+        Piece tempPiece = this.board[originalCol1][originalRow1];
+        try {
+            if (tempPiece.isValidMove(pieceIndex, this.board, this.turnChanger)) {
+                this.board[destinationCol1][destinationRow1] = board[originalCol1][originalRow1];
+                this.board[originalCol1][originalRow1] = null;
+                System.out.println("Nice move");
+                System.out.println();
+            } else {
+                System.out.println();
+                System.out.println("You can't move there");
+                InputCollector inputCollector = new InputCollector();
+                keepPlaying(inputCollector.pickAndMove());
+            }
+        }catch (NullPointerException e){
+            System.out.println("Invalid input");
+            turnChanger ++;
+        }
     }
 
+//    /**
+//     * Print board method
+//     */
+//    public void printBoard(){
+//        for(int i = 0; i < 8; i++){
+//            for (int j = 0; j < 8; j++){
+//                if(board[i][j] == null){
+//                    System.out.print(". ");
+//                }else{
+//                    System.out.print(board[i][j].getIcon() + " ");
+//                }
+//            }
+//            System.out.println(" " + i);
+//        }
+//        System.out.print("a b c d e f g h");
+//        System.out.println();
+//    }
+
     /**
-     * Print board method
+     * Print board method    !!!!only for my laptop!!!!
      */
     public void printBoard(){
         for(int i = 0; i < 8; i++){
@@ -128,6 +187,7 @@ public class Game {
             }
             System.out.println(" " + i);
         }
+        System.out.println();
         System.out.print("a b c d e f g h");
         System.out.println();
     }
